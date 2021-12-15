@@ -36,5 +36,15 @@ public class MEE {
     public static MEE getNbTotEx () {
         return MEE.getNbTotEx();
     }
-    
+    public boolean estVide() {
+        return this.tabFreq.length==0;
+    }
+    public void ajoute (int i) {
+        /**
+        * pré-requis : 0 <= i < tabFreq.length
+        * action : ajoute un exemplaire de i à this
+        */
+        this.tabFreq[i]++;
+        nbTotEx++;
+    }
 }
