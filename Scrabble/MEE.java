@@ -90,4 +90,19 @@ public class MEE {
             return false;
         }
     }
+    public int sommeValeurs (int []v) {
+        /**
+        * pré-requis : tabFreq.length <= v.length
+        * résultat : retourne la somme des valeurs des exemplaires des
+        * éléments de this, la valeur d’un exemplaire d’un élément i
+        * de this étant égale à v[i]*/
+        int i=0;
+        int total=0;
+        this.tabFreq=v;
+        while (i<v.length) {
+            total=total+v[i];
+            i++;
+        }
+        return total;
+    }
 }
