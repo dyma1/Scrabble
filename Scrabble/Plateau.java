@@ -1,6 +1,6 @@
 package Scrabble;
 public class Plateau {
-    private Case[][]g = new Case [15][15];
+    private Case[][] g = new Case [15][15];
     public Plateau() {
         int[][]plateau = {{5, 1, 1, 2, 1, 1, 1, 5, 1, 1, 1, 2, 1, 1, 5},
                           {1, 4, 1, 1, 1, 3, 1, 1, 1, 3, 1, 1, 1, 4, 1},
@@ -23,4 +23,5 @@ public class Plateau {
             }
         }
     }
+    
 }

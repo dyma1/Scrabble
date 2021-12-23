@@ -15,6 +15,15 @@ public class Case {
         return this.couleur;
     }
     public char getLettre () {
-        return this.lettre;
+        return this.lettre; // il faut que ce soit une lettre majuscule
     }
+    public void setLettre(char let) {
+        //verifier que la lettre est en majuscule
+        this.lettre=let;
+        this.recouverte=true;
+    }
+    public boolean estRecouverte() {
+        return this.recouverte;
+    }
+    //toString a faire
 }
