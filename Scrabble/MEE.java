@@ -1,4 +1,5 @@
 package Scrabble;
+import java.util.*;
 public class MEE {
     //Attributs
     private int[] tabFreq;
@@ -11,11 +12,17 @@ public class MEE {
         * action : crée un multi-ensemble vide dont les éléments seront
         * inférieurs à max*/
         this.tabFreq = new int[max];
+        this.nbTotEx=0;
     }
     public MEE (int []tab) {
-        for (int i=0; i<this.tabFreq.length;i++) {
+        int co = 0;
+        for (int i=0; i<this.tabFreq.length-1;i++){
             this.tabFreq[i]=tab[i];
         }
+        for (int j=0; j<this.tabFreq.length-1;j++){
+            co += tabFreq[j];
+        }
+        this.nbTotEx=co;
     }
     public MEE (MEE e) {
         this.tabFreq=e.tabFreq;
@@ -23,11 +30,16 @@ public class MEE {
     }
 
     //Méthodes
-    public static MEE getNbTotEx () {
-        return MEE.getNbTotEx();
+    private static int randomMinMax(int min, int max) {
+        // Resultat : un entier entre min et max choisi aleatoirement
+        Random rand = new Random();
+        int res = rand.nextInt(max - min + 1) + min;
+        // System.out.println(res + " in [" + min + "," + max + "]");
+        // assert min <= res && res <= max : "tirage aleatoire hors des bornes";
+        return res;
     }
     public boolean estVide() {
-        return this.tabFreq.length==0;
+        return this.nbTotEx==0;
     }
     public void ajoute (int i) {
         /**
@@ -57,9 +69,10 @@ public class MEE {
         * pré-requis : this est non vide
         * action/résultat : retire de this un exemplaire choisi aléatoirement
         * et le retourne*/
-        int i=Ut.randomMinMax(tabFreq[0], tabFreq.length);
+        int i = randomMinMax(this.tabFreq[0], this.tabFreq.length);
         retire(i);
         return i;
+        
     }
     public boolean transfert (MEE e, int i) {
         /**
@@ -78,7 +91,7 @@ public class MEE {
         }
     }
     public boolean transfertAleat (MEE e, int k) {
-        k=Ut.randomMinMax(tabFreq[0], tabFreq.length);
+        k= randomMinMax(tabFreq[0], tabFreq.length);
         if (this.tabFreq[k] > 0) {
             nbTotEx--;
             this.tabFreq[k]--;
