@@ -1,4 +1,3 @@
-package Scrabble;
 public class Case {
     private int couleur;
     private char lettre;

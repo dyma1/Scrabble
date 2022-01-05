@@ -1,4 +1,3 @@
-package Scrabble;
 import java.util.*;
 public class MEE {
     //Attributs

@@ -1,4 +1,3 @@
-package Scrabble;
 public class Plateau {
     private Case[][] g = new Case [15][15];
     public Plateau() {
