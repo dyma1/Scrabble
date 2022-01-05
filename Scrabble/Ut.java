@@ -5,6 +5,15 @@ import java.util.*;
 
 public class Ut {
 
+	public static int randomMinMax(int min, int max) {
+		// Resultat : un entier entre min et max choisi aleatoirement
+		Random rand = new Random();
+		int res = rand.nextInt(max - min + 1) + min;
+		// System.out.println(res + " in [" + min + "," + max + "]");
+		// assert min <= res && res <= max : "tirage aleatoire hors des bornes";
+		return res;
+	}
+
     public static void afficher (Object object) {
 	System.out.print(object);
     }
@@ -191,15 +200,6 @@ public class Ut {
 	}
 	return a;
     } 
-
-    public static int randomMinMax(int min, int max) {
-	// Resultat : un entier entre min et max choisi aleatoirement
-	Random rand = new Random();
-	int res = rand.nextInt(max - min + 1) + min;
-	// System.out.println(res + " in [" + min + "," + max + "]");
-	// assert min <= res && res <= max : "tirage aleatoire hors des bornes";
-	return res;
-    }
 
     public static void clearConsole () {
 	// Action : efface la console (le terminal)
