@@ -68,12 +68,13 @@ public class MEE {
         * pré-requis : this est non vide
         * action/résultat : retire de this un exemplaire choisi aléatoirement
         * et le retourne*/
+        int j =0;
         boolean test = true;
-        int j=0;
         while (test){
             int i = randomMinMax(this.tabFreq[0], this.tabFreq.length-1);
             if(i>0){
                 retire(i);
+                j = i;
                 test=false;
             }
         }

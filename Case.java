@@ -24,5 +24,12 @@ public class Case {
     public boolean estRecouverte() {
         return this.recouverte;
     }
-    //toString a faire
+    public String toString(){
+        if(this.recouverte == false){
+            return ("La case n'est pas recouverte");
+        }
+        else {
+            return ("La case est recouverte par la lettre numéro "+this.lettre+" et par la couleur "+this.couleur);
+        }
+    }   
 }
