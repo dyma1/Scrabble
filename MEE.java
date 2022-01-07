@@ -1,7 +1,7 @@
-package Scrabble;
+import java.util.*;
 public class MEE {
     //Attributs
-    private int[] tabFreq;
+    private int[] tabFreq;// tabFreq[i] est le nombre d’exemplaires(fréquence) de l’élément i
     private int nbTotEx; // nombre total d'exemplaires
 
     //Constructeurs
@@ -11,11 +11,17 @@ public class MEE {
         * action : crée un multi-ensemble vide dont les éléments seront
         * inférieurs à max*/
         this.tabFreq = new int[max];
+        this.nbTotEx=0;
     }
     public MEE (int []tab) {
-        for (int i=0; i<this.tabFreq.length;i++) {
+        int co = 0;
+        for (int i=0; i<this.tabFreq.length-1;i++){
             this.tabFreq[i]=tab[i];
         }
+        for (int j=0; j<this.tabFreq.length-1;j++){
+            co += tabFreq[j];
+        }
+        this.nbTotEx=co;
     }
     public MEE (MEE e) {
         this.tabFreq=e.tabFreq;
@@ -23,11 +29,16 @@ public class MEE {
     }
 
     //Méthodes
-    public static MEE getNbTotEx () {
-        return MEE.getNbTotEx();
+    private static int randomMinMax(int min, int max) {
+        // Resultat : un entier entre min et max choisi aleatoirement
+        Random rand = new Random();
+        int res = rand.nextInt(max - min + 1) + min;
+        // System.out.println(res + " in [" + min + "," + max + "]");
+        // assert min <= res && res <= max : "tirage aleatoire hors des bornes";
+        return res;
     }
     public boolean estVide() {
-        return this.tabFreq.length==0;
+        return this.nbTotEx==0;
     }
     public void ajoute (int i) {
         /**
@@ -37,7 +48,7 @@ public class MEE {
         this.tabFreq[i]++;
         nbTotEx++;
     }
-    boolean retire (int i) {
+    public boolean retire (int i) {
         /**
         * pré-requis : 0 <= i < tabFreq.length
         * action/résultat : retire un exemplaire de i de this s’il en existe,
@@ -57,9 +68,17 @@ public class MEE {
         * pré-requis : this est non vide
         * action/résultat : retire de this un exemplaire choisi aléatoirement
         * et le retourne*/
-        int i=Ut.randomMinMax(tabFreq[0], tabFreq.length);
-        retire(i);
-        return i;
+        int j =0;
+        boolean test = true;
+        while (test){
+            int i = randomMinMax(this.tabFreq[0], this.tabFreq.length-1);
+            if(i>0){
+                retire(i);
+                j = i;
+                test=false;
+            }
+        }
+        return j;
     }
     public boolean transfert (MEE e, int i) {
         /**
@@ -68,7 +87,7 @@ public class MEE {
         * en existe, et retourne vrai ssi cette action a pu être effectuée*/
         if (this.tabFreq[i] > 0) {
             this.tabFreq[i]--;
-            nbTotEx--;
+            this.nbTotEx--;
             e.tabFreq[i]++;
             e.nbTotEx++;
             return true;
@@ -78,10 +97,10 @@ public class MEE {
         }
     }
     public boolean transfertAleat (MEE e, int k) {
-        k=Ut.randomMinMax(tabFreq[0], tabFreq.length);
+        k= randomMinMax(tabFreq[0], tabFreq.length-1);
         if (this.tabFreq[k] > 0) {
-            nbTotEx--;
             this.tabFreq[k]--;
+            this.nbTotEx--;
             e.tabFreq[k]++;
             e.nbTotEx++;
             return true;
@@ -96,12 +115,9 @@ public class MEE {
         * résultat : retourne la somme des valeurs des exemplaires des
         * éléments de this, la valeur d’un exemplaire d’un élément i
         * de this étant égale à v[i]*/
-        int i=0;
         int total=0;
-        this.tabFreq=v;
-        while (i<v.length) {
-            total=total+v[i];
-            i++;
+        for(int i = 0; i<v.length-1; i++) {
+            total+=this.tabFreq[i]*v[i];    
         }
         return total;
     }
