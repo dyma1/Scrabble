@@ -79,17 +79,28 @@ public class Plateau {
         return plat;
     }
 
-    //public boolean placementValide(String mot, int numLigne, int numCol, char sens, MEE e){
+    public boolean placementValide(String mot, int numLigne, int numCol, char sens, MEE e){
         /**
-        * pré-requis : le placement de mot sur this à partir de la case
-        * (numLig, numCol) dans le sens donné par sens est valide
-        * résultat : retourne le nombre de points rapportés par ce placement, le
-        * nombre de points de chaque jeton étant donné par le tableau nbPointsJet.
+        * pré-requis : mot est un mot accepté par CapeloDico,
+        * 0 <= numLig <= 14, 0 <= numCol <= 14, sens est un élément
+        * de {’h’,’v’} et l’entier maximum prévu pour e est au moins 25
+        * résultat : retourne vrai ssi le placement de mot sur this à partir
+        * de la case (numLig, numCol) dans le sens donné par sens à l’aide
+        * des jetons de e est valide.
         */
-      //  int m[] = new []; 
-      //  m[] = this.mot.toCharArray();
+        if (mot.length()>=2) {
+            if (sens == 'H') { // si lettre minuscule, la mettre en maj
+                if (this.g[numCol][numLigne].estRecouverte()) {
+                    return false;
+                }
+                else {
+                }
+            }
+            //int m[] = new [];
+            //m[] = this.mot.toCharArray();
+        }
 
-    //}
+    }
 
     //public int nbPointsPlacement(String mot, int numLig, int numCol, char sens, int[] nbPointsJet) {
         /**
