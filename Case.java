@@ -2,6 +2,7 @@ public class Case {
     private int couleur;
     private char lettre;
     public boolean recouverte;
+
     public Case (int uneCouleur) {
         /**
         * pré-requis : uneCouleur est un entier entre 1 et 5
