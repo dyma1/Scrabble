@@ -18,11 +18,18 @@ public class Case {
     }
     public void setLettre(char let) {
         //verifier que la lettre est en majuscule
-        this.lettre=let;
-        this.recouverte=true;
+        if (this.estRecouverte() == false) {
+            this.lettre = let;
+            this.recouverte = true;
+        }
     }
     public boolean estRecouverte() {
-        return this.recouverte;
+        if(this.recouverte == true){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     public String toString(){
         if(this.recouverte == false){
