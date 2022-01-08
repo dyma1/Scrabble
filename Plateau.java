@@ -1,6 +1,14 @@
 public class Plateau {
-    
     private Case [][] g;
+    private static String []abscisse = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15"};
+    private static String []ordonnee = {"A |", "B |", "C |", "D |", "E |", "F |", "G |", "H |", "I |", "J |", "K |", "L |", "M |", "N |", "O |", "P |"};
+
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_ROUGE = "\u001B[31m";
+    public static final String ANSI_MAGENTA = "\u001B[35m";
+    public static final String ANSI_BLEU = "\u001B[34m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_BLANC_BACKGROUND = "\u001B[47m";
 
     public Plateau() {
         int[][] plateau = {{5, 1, 1, 2, 1, 1, 1, 5, 1, 1, 1, 2, 1, 1, 5},
@@ -34,39 +42,65 @@ public class Plateau {
     	* resultat : chaine decrivant ce Plateau
     	*/
     	String plat = "";
+
+        plat+="   ";
+        for (int a = 0; a < g.length; a++) {
+            plat += "|"+abscisse[a];
+        }
+        plat += "|";
+        plat += "\n"+" ";
+        for (int interligne = 0; interligne < g.length+1; interligne++) {
+            plat += "__|";
+        }
+        plat += "\n";
+
     	for(int i = 0; i<this.g.length; i++) {
-            plat += "|";
+            plat += "|"+ordonnee[i];
     		for(int j = 0;j<this.g[i].length; j++) {
     			if(g[i][j].estRecouverte()) {
     				plat += g[i][j].getLettre();
-                    
     			}
                 else{
                     if(g[i][j].getCouleur() == 1){
-                        plat += " ";
+                        plat += "  ";
                     }
                     else{
-                        plat += g[i][j].getCouleur();
+                        plat += g[i][j].getCouleur()+" ";
                     }
                 }
                 plat += "|";
     		}
             plat += "\n";
     	}
+        for (int interligne = 0; interligne < g.length+1; interligne++) {
+            plat += "---";
+        }
+        plat += "\n";
         return plat;
     }
 
-    //public boolean placementValide(String mot, int numLigne, int numCol, char sens, MEE e){
+    public boolean placementValide(String mot, int numLigne, int numCol, char sens, MEE e){
         /**
-        * pré-requis : le placement de mot sur this à partir de la case
-        * (numLig, numCol) dans le sens donné par sens est valide
-        * résultat : retourne le nombre de points rapportés par ce placement, le
-        * nombre de points de chaque jeton étant donné par le tableau nbPointsJet.
+        * pré-requis : mot est un mot accepté par CapeloDico,
+        * 0 <= numLig <= 14, 0 <= numCol <= 14, sens est un élément
+        * de {’h’,’v’} et l’entier maximum prévu pour e est au moins 25
+        * résultat : retourne vrai ssi le placement de mot sur this à partir
+        * de la case (numLig, numCol) dans le sens donné par sens à l’aide
+        * des jetons de e est valide.
         */
-      //  int m[] = new []; 
-      //  m[] = this.mot.toCharArray();
+        if (mot.length()>=2) {
+            if (sens == 'H') { // si lettre minuscule, la mettre en maj
+                if (this.g[numCol][numLigne].estRecouverte()) {
+                    return false;
+                }
+                else {
+                }
+            }
+            //int m[] = new [];
+            //m[] = this.mot.toCharArray();
+        }
 
-    //}
+    }
 
     //public int nbPointsPlacement(String mot, int numLig, int numCol, char sens, int[] nbPointsJet) {
         /**
