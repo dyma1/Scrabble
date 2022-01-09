@@ -110,8 +110,6 @@ public class Plateau {
             else {
                 return false;
             }
-            //int m[] = new [];
-            //m[] = this.mot.toCharArray();
         }
         return false;
     }
