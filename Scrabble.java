@@ -6,10 +6,6 @@ public class Scrabble {
     private Plateau plateau;
     private MEE sac;
 
-
-    public Scrabble () {
-        this.sac
-    }
     public static void main (String[]args) {
         
     }
