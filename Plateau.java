@@ -114,17 +114,16 @@ public class Plateau {
             //m[] = this.mot.toCharArray();
         }
         return false;
-
     }
 
-    //public int nbPointsPlacement(String mot, int numLig, int numCol, char sens, int[] nbPointsJet) {
+    //public int nbPointsPlacement(String mot, int numLig, int numCol, char sens, int[] nbPointsJeton) {
         /**
         * pré-requis : le placement de mot sur this à partir de la case
         * (numLig, numCol) dans le sens donné par sens est valide
         * résultat : retourne le nombre de points rapportés par ce placement, le
         * nombre de points de chaque jeton étant donné par le tableau nbPointsJet.
         */
-
+        
     //}
 
     //public int place(String mot, int numLig, int numCol, char sens, MEE e){
