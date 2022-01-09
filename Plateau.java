@@ -90,15 +90,30 @@ public class Plateau {
         */
         if (mot.length()>=2) {
             if (sens == 'H') { // si lettre minuscule, la mettre en maj
-                if (this.g[numCol][numLigne].estRecouverte()) {
-                    return false;
+                for (int i=0; !this.g[numCol][numLigne+i].estRecouverte(); i++) {
+                    if (numLigne <= 14 && numLigne >= 0) {
+                        if (i == mot.length()-1) {
+                         return true;
+                        }
+                    }
                 }
-                else {
+            }
+            else if (sens =='V') {
+                for (int i=0; !this.g[numCol+i][numLigne].estRecouverte(); i++) {
+                    if (numCol <= 14 && numCol >= 0) {
+                        if (i == mot.length()-1) {
+                         return true;
+                        }
+                    }
                 }
+            }
+            else {
+                return false;
             }
             //int m[] = new [];
             //m[] = this.mot.toCharArray();
         }
+        return false;
 
     }
 

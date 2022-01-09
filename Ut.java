@@ -2,7 +2,7 @@
 // dmaj : fin octobre 2020
 
 import java.util.*;
-import java.lang.*;
+//import java.lang.*;
 
 public class Ut {
 
@@ -94,16 +94,17 @@ public class Ut {
     
     public static int saisirEntier () {
 	
-	Scanner clavier=new Scanner(System.in);
-	String s = clavier.nextLine(); //int lu = clavier.nextInt();
-	int lu=456;
-	try{
-	    lu = Integer.parseInt(s);
+	try (Scanner clavier = new Scanner(System.in)) {
+		String s = clavier.nextLine(); //int lu = clavier.nextInt();
+		int lu=456;
+		try{
+		    lu = Integer.parseInt(s);
+		}
+		catch(NumberFormatException ex){
+		    System.out.println("Ce n'est pas un entier valide");
+		}
+		return lu;
 	}
-	catch(NumberFormatException ex){
-	    System.out.println("Ce n'est pas un entier valide");
-	}
-	return lu;
     }
 
     public static double saisirDouble () {
@@ -112,59 +113,65 @@ public class Ut {
 
     public static double saisirReel () {
 	
-	Scanner clavier=new Scanner(System.in);
-	String s = clavier.nextLine();
-	double lu = -123.987;
-	try{
-	    lu = Double.parseDouble(s);
+	try (Scanner clavier = new Scanner(System.in)) {
+		String s = clavier.nextLine();
+		double lu = -123.987;
+		try{
+		    lu = Double.parseDouble(s);
+		}
+		catch(NumberFormatException ex){
+		    System.out.println("Ce n'est pas un reel valide");
+		}
+		    return lu;
 	}
-	catch(NumberFormatException ex){
-	    System.out.println("Ce n'est pas un reel valide");
-	}
-        return lu;
     }
 
     public static float saisirFlottant () {
 	
-	Scanner clavier=new Scanner(System.in);
-	String s = clavier.nextLine();
-	float lu = -123.987F;
-	try{
-	    lu = Float.parseFloat(s);
+	try (Scanner clavier = new Scanner(System.in)) {
+		String s = clavier.nextLine();
+		float lu = -123.987F;
+		try{
+		    lu = Float.parseFloat(s);
+		}
+		catch(NumberFormatException ex){
+		    System.out.println("Ce n'est pas un reel valide");
+		}
+		    return lu;
 	}
-	catch(NumberFormatException ex){
-	    System.out.println("Ce n'est pas un reel valide");
-	}
-        return lu;
     }
 
     public static char saisirCaractere () {
 	
-	Scanner clavier=new Scanner(System.in);
-	char lu = clavier.next().charAt(0);
-        return lu;
+	try (Scanner clavier = new Scanner(System.in)) {
+		char lu = clavier.next().charAt(0);
+		    return lu;
+	}
     }
 
     public static boolean saisirBooleen () {
 	
-	Scanner clavier=new Scanner(System.in);
-	boolean lu = clavier.nextBoolean();
-        return lu;
+	try (Scanner clavier = new Scanner(System.in)) {
+		boolean lu = clavier.nextBoolean();
+		    return lu;
+	}
     }
 
     public static String saisirChaine () {
 	
-	Scanner clavier=new Scanner(System.in);
-	String s = clavier.nextLine();
-	return s;
+	try (Scanner clavier = new Scanner(System.in)) {
+		String s = clavier.nextLine();
+		return s;
+	}
     }
 
     public static char [] saisirCharArray () {
 	
-	Scanner clavier=new Scanner(System.in);
-	String s = clavier.nextLine();
-	char [] tab = s.toCharArray();
-	return tab;
+	try (Scanner clavier = new Scanner(System.in)) {
+		String s = clavier.nextLine();
+		char [] tab = s.toCharArray();
+		return tab;
+	}
     }
     
 
