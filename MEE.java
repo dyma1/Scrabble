@@ -96,6 +96,9 @@ public class MEE {
             return false;
         }
     }
+    public int regarde(int i){
+        return this.tabFreq[i];
+    }
     public boolean transfertAleat (MEE e, int k) {
         k= randomMinMax(tabFreq[0], tabFreq.length-1);
         if (this.tabFreq[k] > 0) {
